@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.example.android.kotlintraining.R
 import com.example.android.kotlintraining.databinding.FragmentOverviewBinding
 import com.example.android.kotlintraining.view_model.list_user.ListUserViewModelFactory
 import com.example.android.kotlintraining.view_model.list_user.OverviewViewModel
@@ -29,12 +31,16 @@ class OverviewFragment : Fragment() {
         ).get(OverviewViewModel::class.java)
 
         // Sets the adapter of the photosGrid RecyclerView
-        binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.OnClickListener {
+        userAdapter = UserAdapter(OnClickListener {
             viewModel.displayPropertyDetails(it)
         })
 
+        binding.listItem.apply {
+            adapter = userAdapter
+        }
+
         viewModel.navigateToSelectedProperty.observe(this, Observer {
-            if ( null != it ) {
+            if ( it != null ) {
                 // Must find the NavController from the Fragment
                 this.findNavController().navigate(
                     OverviewFragmentDirections.actionShowDetail(it)
@@ -45,5 +51,14 @@ class OverviewFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private var userAdapter: UserAdapter? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.listUser.observe(viewLifecycleOwner, Observer {
+            data -> data.apply { userAdapter?.data = data }
+        })
     }
 }

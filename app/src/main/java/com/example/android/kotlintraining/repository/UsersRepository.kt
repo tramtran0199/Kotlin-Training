@@ -5,7 +5,6 @@ import androidx.lifecycle.Transformations
 import com.example.android.kotlintraining.database.UsersDatabase
 import com.example.android.kotlintraining.database.asDomainModel
 import com.example.android.kotlintraining.apis.ListUserApi
-import com.example.android.kotlintraining.apis.ListUserProperty
 import com.example.android.kotlintraining.apis.asDatabaseModel
 import com.example.android.kotlintraining.models.UserModel
 import kotlinx.coroutines.Dispatchers

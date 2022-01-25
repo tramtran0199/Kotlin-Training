@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.android.kotlintraining.models.UserModel" />
+        <variable
+            name="action"
+            type="com.example.android.kotlintraining.ui.list_user.OnClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_avatar"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:scaleType="fitXY"
+                imageUrl="@{model.avatarUrl}"
+                tools:src="@tools:sample/backgrounds/scenic"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/item_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{model.login}"
+                android:textSize="24sp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintTop_toBottomOf="@+id/item_avatar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:text="login"/>
+
+            <TextView
+                android:id="@+id/item_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.url}"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:paddingBottom="5dp"
+                android:maxLines="1"
+                app:layout_constraintTop_toBottomOf="@+id/item_login"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:text="URL"/>
+
+            <View
+                android:id="@+id/action_detail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/item_login"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="@{() -> action.onClick(model)}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

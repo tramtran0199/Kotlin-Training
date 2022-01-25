@@ -35,8 +35,9 @@ class OverviewViewModel(application: Application) : ViewModel() {
         }
     }
 
-    fun displayPropertyDetails(listUserProperty: UserModel) {
-        _navigateToSelectedProperty.value = listUserProperty
+    fun displayPropertyDetails(userModel: UserModel) {
+        Log.i("AAA", "$userModel")
+        _navigateToSelectedProperty.value = userModel
     }
 
     fun displayPropertyDetailsComplete() {
