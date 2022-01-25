@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="property"
+            type="com.example.android.kotlintraining.models.UserModel"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/mars_image"
+                android:layout_width="550dp"
+                android:layout_height="300dp"
+                android:scaleType="fitXY"
+                app:imageUrl="@{property.avatarUrl}"
+                tools:src="@tools:sample/backgrounds/scenic"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{property.login}"
+                android:textSize="24sp"
+                android:paddingLeft="5dp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{property.url}"
+                android:textSize="20sp"
+                android:paddingLeft="5dp"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
