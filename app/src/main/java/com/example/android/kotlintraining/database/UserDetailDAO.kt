@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface UserDAO {
-    @Query("SELECT * FROM userentity")
-    fun getListUser(): LiveData<List<UserEntity>>
+interface UserDetailDAO {
+    @Query("SELECT * FROM userdetailentity WHERE login = :key")
+    fun getUser(key: String): LiveData<UserDetailEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<UserEntity>)
+    fun insert(detail: UserDetailEntity)
 }

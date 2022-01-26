@@ -3,18 +3,15 @@ package com.example.android.kotlintraining.view_model.user_detail
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.android.kotlintraining.apis.UserDetailApi
-import com.example.android.kotlintraining.apis.UserDetailProperty
+import com.example.android.kotlintraining.database.getDatabase
+import com.example.android.kotlintraining.repository.UserDetailRepository
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 
 class DetailViewModel( selectedUser: String,
                       app: Application) : AndroidViewModel(app) {
 
-    private val _properties = MutableLiveData<UserDetailProperty>()
-    val properties: LiveData<UserDetailProperty>
-        get() = _properties
+    private val _properties = UserDetailRepository(getDatabase(app), selectedUser)
+    val properties = _properties.userDetail
 
     private var _selectedUser = MutableLiveData<String>()
 
@@ -26,7 +23,7 @@ class DetailViewModel( selectedUser: String,
     private fun getUserDetailProperties() {
         viewModelScope.launch {
             try {
-                _properties.value = UserDetailApi.retrofitService.getUserDetail(_selectedUser.value.toString())
+                _properties.refreshUser()
             } catch (e: Exception) {
                 Log.e("GetData", "$e")
             }

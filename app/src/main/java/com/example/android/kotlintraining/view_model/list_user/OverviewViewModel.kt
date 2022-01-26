@@ -5,7 +5,6 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.android.kotlintraining.database.getDatabase
-import com.example.android.kotlintraining.apis.*
 import com.example.android.kotlintraining.models.UserModel
 import com.example.android.kotlintraining.repository.UsersRepository
 import kotlinx.coroutines.launch
@@ -36,7 +35,6 @@ class OverviewViewModel(application: Application) : ViewModel() {
     }
 
     fun displayPropertyDetails(userModel: UserModel) {
-        Log.i("AAA", "$userModel")
         _navigateToSelectedProperty.value = userModel
     }
 
