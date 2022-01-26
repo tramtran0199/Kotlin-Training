@@ -9,7 +9,7 @@ import com.example.android.kotlintraining.models.UserModel
 import com.example.android.kotlintraining.repository.UsersRepository
 import kotlinx.coroutines.launch
 
-enum class ListUserApiStatus { LOADING, ERROR, DONE }
+enum class ApiStatus { LOADING, ERROR, DONE }
 
 class OverviewViewModel(application: Application) : ViewModel() {
 

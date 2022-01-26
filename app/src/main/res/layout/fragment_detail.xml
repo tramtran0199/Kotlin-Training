@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.android.kotlintraining.view_model.user_detail.DetailViewModel" />
@@ -13,6 +14,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_grey"
         tools:context=".DetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +29,7 @@
                 android:textSize="30sp"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@{viewModel.properties.name}"
+                android:text="@{viewModel.displayName}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 tools:text="Name" />
@@ -79,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#de000000"
                         android:textSize="20sp"
-                        android:text="@{viewModel.properties.createdAt}"
+                        android:text="@{viewModel.formatDate}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/property_type_text"
                         tools:text="Time" />
@@ -97,13 +99,14 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginHorizontal="20dp"
-                    android:src="@drawable/ic_mail_red"/>
+                    android:src="@drawable/ic_mail_red"
+                    android:visibility="@{viewModel.checkMail ? View.VISIBLE : View.GONE}"/>
 
                 <TextView
                     android:id="@+id/blog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#de000000"
+                    android:textColor="@color/red"
                     android:textSize="20sp"
                     android:text="@{viewModel.properties.blog}"
                     app:layout_constraintStart_toStartOf="parent"

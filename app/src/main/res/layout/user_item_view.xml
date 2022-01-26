@@ -55,6 +55,7 @@
                 android:text="@{model.url}"
                 android:textSize="20sp"
                 android:layout_marginLeft="20dp"
+                android:textColor="@color/colorPrimary"
                 android:paddingBottom="5dp"
                 android:maxLines="1"
                 app:layout_constraintTop_toBottomOf="@+id/item_login"
