@@ -44,6 +44,6 @@ class UserAdapter(val callback: OnClickListener): RecyclerView.Adapter<UserAdapt
     }
 }
 
-class OnClickListener(val clickListener: (userModel: UserModel) -> Unit) {
-    fun onClick(userModel: UserModel) = clickListener(userModel)
+class OnClickListener(val clickListener: (userModel: UserModel, isOpenDetail: Boolean) -> Unit) {
+    fun onClick(userModel: UserModel, isOpenDetail: Boolean) = clickListener(userModel, isOpenDetail)
 }
